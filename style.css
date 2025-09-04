@@ -1,126 +1,23 @@
-/* Reset some default styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Body and general styles */
 body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f4f4f4;
-  color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* Header styles */
 header {
-  background-color: #004d99;
-  color: white;
-  padding: 10px 0;
-  text-align: center;
+    background-color: #f1f1f1;
+    padding: 20px 0;
+    text-align: center;
 }
 
-header .logo {
-  font-size: 2rem;
-  font-weight: bold;
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;  /* Adjust the space between logos */
 }
 
-header nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-header nav ul li {
-  display: inline;
-  margin: 0 15px;
-}
-
-header nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.1rem;
-}
-
-header nav ul li a:hover {
-  text-decoration: underline;
-}
-
-/* Main section styles */
-main {
-  padding: 20px;
-}
-
-/* Hero section */
-.hero {
-  background-color: #0056b3;
-  color: white;
-  text-align: center;
-  padding: 50px 20px;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.5rem;
-}
-
-/* Stats section */
-.stats {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px 0;
-}
-
-.stat {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 22%;
-}
-
-.stat h2 {
-  font-size: 2rem;
-  color: #004d99;
-}
-
-.stat p {
-  font-size: 1.1rem;
-  color: #555;
-}
-
-/* Beneficiaries and Technologies sections */
-.beneficiaries, .technologies {
-  margin: 20px 0;
-}
-
-.beneficiaries h2, .technologies h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.beneficiaries ul, .technologies ul {
-  list-style: none;
-  padding: 0;
-}
-
-.beneficiaries ul li, .technologies ul li {
-  font-size: 1.1rem;
-  margin: 5px 0;
-}
-
-/* Footer styles */
-footer {
-  background-color: #222;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+.logo {
+    height: 50px;  /* Adjust height as per your requirement */
+    width: auto;
 }
