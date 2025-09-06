@@ -1,19 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NIELIT Bhubaneswar – Modern 2025</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS Animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="path/to/logo1.png" alt="Ministry of Electronics and Information Technology" class="logo">
-            <img src="path/to/logo2.png" alt="Chhattisgarh Logo" class="logo">
-            <img src="path/to/logo3.png" alt="Samagra Shiksha" class="logo">
-            <img src="path/to/logo4.png" alt="NIELIT Logo" class="logo">
-        </div>
-    </header>
+
+<!-- Top Header -->
+<div class="container-fluid top-header">
+  <div class="row align-items-center">
+    <div class="col-md-3 col-12 text-md-start text-center">
+      <img src="header-logo.png" alt="NIELIT Logo" class="logo-left img-fluid">
+    </div>
+    <div class="col-md-6 col-12 text-center">
+      <h5 class="fw-bold mb-0 hindi-text">राष्ट्रीय इलेक्ट्रॉनिकी एवं सूचना प्रौद्योगिकी संस्थान , भुवनेश्वर</h5>
+      <p class="mb-0 english-text">National Institute of Electronics & Information Technology, Bhubaneswar</p>
+    </div>
+    <div class="col-md-3 col-12 text-md-end text-center">
+      <img src="Ministry_of_Electronics_and_Information_Technology_fixed.jpg"
+           alt="Ministry of Electronics & IT, Government of India" class="logo-right img-fluid">
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg glass-navbar sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">NIELIT Bhubaneswar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="hero" class="hero">
+  <div id="particles-js"></div>
+  <div class="hero-content" data-aos="fade-up">
+    <h1 class="fw-bold"><span id="typewriter"></span></h1>
+    <p>Empowering students with cutting-edge skills in Electronics, IT & Beyond.</p>
+    <a href="#programs" class="btn btn-light btn-modern mt-3">Explore Programs</a>
+  </div>
+</section>
+
+<!-- Programs Section -->
+<section id="programs" class="container py-5">
+  <div class="text-center mb-5" data-aos="fade-up">
+    <h2 class="fw-bold">Our Programs</h2>
+    <p class="text-muted">Industry-ready courses designed for 2025 and beyond</p>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mb-4" data-aos="zoom-in">
+      <div class="card p-4 text-center">
+        <i class="fas fa-robot fa-3x mb-3 text-primary"></i>
+        <h4>AI & Data Science</h4>
+        <p>Learn Artificial Intelligence, Machine Learning, and Big Data tools.</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+      <div class="card p-4 text-center">
+        <i class="fas fa-shield-alt fa-3x mb-3 text-danger"></i>
+        <h4>Cyber Security</h4>
+        <p>Hands-on training in digital forensics, ethical hacking, and defense systems.</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+      <div class="card p-4 text-center">
+        <i class="fas fa-cloud fa-3x mb-3 text-success"></i>
+        <h4>IoT & Cloud</h4>
+        <p>Future-ready skills in Internet of Things and cloud computing platforms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="container py-5">
+  <div class="row align-items-center">
+    <div class="col-md-6" data-aos="fade-right">
+      <h2 class="fw-bold">About NIELIT Bhubaneswar</h2>
+      <p>Established in 2021, NIELIT Bhubaneswar offers NSQF-aligned programs that blend academic rigor with industry standards. With state-of-the-art labs and strong industry collaborations, we prepare students for real-world challenges.</p>
+      <div class="stats mt-4">
+        <div class="stat"><span class="counter" data-target="5000">0</span>+ Students</div>
+        <div class="stat"><span class="counter" data-target="20">0</span>+ Programs</div>
+        <div class="stat"><span class="counter" data-target="100">0</span>+ Partners</div>
+      </div>
+    </div>
+    <div class="col-md-6 text-center" data-aos="fade-left">
+      <img src="campus.jpg" alt="Campus" class="img-fluid rounded shadow">
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="container py-5">
+  <div class="text-center mb-4" data-aos="fade-up">
+    <h2 class="fw-bold">Contact Us</h2>
+  </div>
+  <form class="mx-auto needs-validation" style="max-width: 600px;" novalidate data-aos="fade-up">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+      <label for="name">Your Name</label>
+      <div class="invalid-feedback">Please enter your name.</div>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+      <label for="email">Your Email</label>
+      <div class="invalid-feedback">Please enter a valid email.</div>
+    </div>
+    <div class="form-floating mb-3">
+      <textarea class="form-control" id="message" placeholder="Your Message" style="height: 150px;" required></textarea>
+      <label for="message">Your Message</label>
+      <div class="invalid-feedback">Please enter a message.</div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-modern">Send Message</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container text-center">
+    <p>&copy; <span id="year"></span> NIELIT Bhubaneswar. All Rights Reserved.</p>
+    <div class="social-icons mt-3">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+    <a href="#hero" class="back-to-top">⬆ Back to Top</a>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js/particles.min.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
