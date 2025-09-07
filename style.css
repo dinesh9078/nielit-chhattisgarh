@@ -226,3 +226,112 @@ footer .social-icons a:hover { color: #0d6efd; }
   border-radius: 30px;
   font-weight: 500;
 }
+#programs .card {
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#programs .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+#programs img {
+  display: block;
+  margin: 0 auto;
+}
+#testimonials .card {
+  border-radius: 15px;
+  background: #fff;
+}
+#testimonials img {
+  border: 3px solid #0d6efd;
+  padding: 3px;
+}
+#testimonials p {
+  font-style: italic;
+  color: #555;
+}
+#testimonials .card {
+  border-radius: 15px;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#testimonials .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+#testimonials img {
+  border: 3px solid #0d6efd;
+  padding: 3px;
+}
+#testimonials p {
+  font-style: italic;
+  color: #555;
+  font-size: 0.95rem;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #0d6efd;
+  border-radius: 50%;
+  padding: 20px;
+  background-size: 60% 60%;
+}
+#schools img {
+  transition: transform 0.3s ease;
+}
+#schools img:hover {
+  transform: scale(1.1);
+}
+#schools .card {
+  border: none;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#schools .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+#schools i {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+#schools i:hover {
+  transform: scale(1.2);
+  color: #0d6efd;
+}
+#schools h6 {
+  font-size: 0.95rem;
+  color: #212529;
+}
+#schools h6 {
+  font-size: 0.9rem;
+  margin-top: 10px;
+  min-height: 50px; /* keeps equal height */
+}
+#schools i {
+  color: #0d6efd;
+}
+.col-5th {
+  flex: 0 0 20%;   /* each column takes 20% */
+  max-width: 20%;
+  padding: 15px;   /* spacing between cards */
+}
+
+@media (max-width: 992px) {
+  .col-5th {
+    flex: 0 0 33.33%; 
+    max-width: 33.33%;   /* 3 per row on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .col-5th {
+    flex: 0 0 50%; 
+    max-width: 50%;     /* 2 per row on mobiles */
+  }
+}
+
+@media (max-width: 576px) {
+  .col-5th {
+    flex: 0 0 100%; 
+    max-width: 100%;   /* 1 per row on small phones */
+  }
+}

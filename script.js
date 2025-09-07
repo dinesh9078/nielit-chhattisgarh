@@ -77,3 +77,32 @@ function initParticles() {
   });
 }
 initParticles();
+const schools = [
+  {
+    name: "Swami Atmanand Govt. English School Pipariya",
+    folder: "images/schools/pipariya/",
+    status: "completed"
+  },
+  {
+    name: "Swami Atmanand Govt. English School Bodla",
+    folder: "images/schools/bodla/",
+    status: "ongoing"
+  }
+];
+
+const container = document.querySelector("#schools .row");
+
+schools.forEach(school => {
+  const col = document.createElement("div");
+  col.className = "col-md-3 col-sm-6 text-center";
+  col.innerHTML = `
+    <a href="${school.folder}" target="_blank">
+      <img src="school-icon.png" alt="${school.name}" class="img-fluid mb-2" style="max-width:80px;">
+      <h6>${school.name}</h6>
+    </a>
+    <span class="badge ${school.status === "completed" ? "bg-success" : "bg-warning"} mt-2">
+      ${school.status === "completed" ? "Training Completed" : "Ongoing"}
+    </span>
+  `;
+  container.appendChild(col);
+});
