@@ -335,3 +335,18 @@ footer .social-icons a:hover { color: #0d6efd; }
     max-width: 100%;   /* 1 per row on small phones */
   }
 }
+/* Blinking cursor for typewriter */
+#typewriter {
+  display: inline-block;
+  border-right: 2px solid #fff; /* cursor */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cursor {
+  animation: blink 0.8s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
