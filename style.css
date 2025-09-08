@@ -75,7 +75,7 @@
 
 /* ===== Notice Bar ===== */
 .notice-bar {
-  background: linear-gradient(90deg, #007bff, #0056d2);
+  background: #003366; /* Updated color (dark blue) */
   color: #ffffff;
   font-weight: 500;
   padding: 6px 0;
@@ -84,16 +84,27 @@
   overflow: hidden;
   white-space: nowrap;
   position: relative;
+  transition: background 0.3s ease;
 }
+
+/* Change background color on hover */
+.notice-bar:hover {
+  background: #005bb5; /* Darker shade when hovered */
+  animation-play-state: paused; /* Pause scrolling on hover */
+}
+
 .notice-bar span {
   display: inline-block;
   padding-left: 100%;
   animation: scrollText 15s linear infinite;
 }
+
+/* Keyframes for scrolling text */
 @keyframes scrollText {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
+
 
 /* ===== Hero ===== */
 .hero {
@@ -349,4 +360,92 @@ footer .social-icons a:hover { color: #0d6efd; }
 
 @keyframes blink {
   50% { border-color: transparent; }
+}
+.navbar .nav-link i {
+  margin-right: 6px;   /* space between icon & text */
+  font-size: 1.1rem;   /* make icons slightly larger */
+}
+/* ===== Candidate Corner ===== */
+#candidates-corner {
+  background-color: #001f3d; /* Dark blue background */
+  padding: 50px 0;
+  color: white;
+}
+
+/* Left Panel */
+.candidates-left {
+  background-color: #0d6efd; /* Bright blue */
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.candidates-left i {
+  color: #fff;
+  font-size: 3rem;
+}
+
+.candidates-left h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.candidates-left p {
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Right Panel Cards */
+.candidate-card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 25px;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.candidate-card i {
+  color: #0d6efd;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.candidate-card h6 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.candidate-card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Hover effect */
+.candidate-card:hover {
+  background: #f1f1f1;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  color: #0d6efd;
+}
+
+.candidate-card:hover i {
+  color: #004a96;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .candidates-left {
+    padding: 30px;
+    margin-bottom: 20px;
+  }
+  .candidate-card {
+    margin-bottom: 20px;
+  }
 }

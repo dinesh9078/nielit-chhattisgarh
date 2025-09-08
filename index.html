@@ -48,58 +48,71 @@
 </div>
 
 
-<!-- Navbar -->
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg glass-navbar sticky-top">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#">NIELIT CHHATTISGARH</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold text-white" href="#">
+      <i class="fa-solid fa-graduation-cap"></i> NIELIT CHHATTISGARH
+    </a>
+
+    <!-- Mobile toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navMenu">
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
 
         <!-- Home -->
         <li class="nav-item">
-          <a class="nav-link active" href="#hero">HOME</a>
-        </li>
-
-        <!-- PM SHRI KV JNV Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="pmDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            PM SHRI KV JNV
+          <a class="nav-link text-white" href="#">
+            <i class="fa-solid fa-house"></i> Home
           </a>
-          <ul class="dropdown-menu" aria-labelledby="pmDropdown">
-            <li><a class="dropdown-item" href="#">Membership Form</a></li>
-          </ul>
         </li>
 
-        <!-- Student Zone Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="studentDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            STUDENT ZONE
+        <!-- Project -->
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">
+            <i class="fa-solid fa-diagram-project"></i> Project
           </a>
-          <ul class="dropdown-menu" aria-labelledby="studentDropdown">
-            <li><a class="dropdown-item" href="#">Courses Offered</a></li>
-            <li><a class="dropdown-item" href="#">Student Portal</a></li>
-            <li><a class="dropdown-item" href="#">Student Registration</a></li>
-          </ul>
-        </li> 
-
-        <!-- News -->
-        <li class="nav-item">
-          <a class="nav-link" href="#">LOGIN</a>
         </li>
 
-        <!-- Contact Us -->
+        <!-- Courses -->
         <li class="nav-item">
-          <a class="nav-link" href="#contact">CONTACT US</a>
+          <a class="nav-link text-white" href="#">
+            <i class="fa-solid fa-book-open"></i> Courses
+          </a>
+        </li>
+
+        <!-- Login -->
+        <li class="nav-item">
+          <a class="nav-link text-white" href="admin-login.php">
+            <i class="fa-solid fa-user"></i> Login
+          </a>
+        </li>
+
+        <!-- Register -->
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">
+            <i class="fa-solid fa-pen"></i> Register
+          </a>
         </li>
 
       </ul>
     </div>
   </div>
 </nav>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <!-- Floating Notice Bar -->
 <!-- Floating Notice Bar -->
 <div class="notice-bar">
@@ -119,6 +132,93 @@
     <a href="#programs" class="btn btn-light btn-modern mt-3">Explore Programs</a>
   </div>
 </section>
+
+
+  <!-- Add the Candidates Corner Section here -->
+  <section id="candidates-corner" class="py-5">
+    <div class="container-fluid">
+      <div class="row g-0">
+
+        <!-- Left Panel (Candidates Corner Heading) -->
+        <div class="col-md-4 candidates-left text-white p-5 d-flex flex-column justify-content-center" data-aos="fade-up">
+          <i class="fa-solid fa-laptop fa-3x mb-3"></i>
+          <h3 class="fw-bold">CANDIDATES CORNER</h3>
+          <p>Find useful resources, tools and services.</p>
+        </div>
+
+        <!-- Right Panel (Resource Cards) -->
+        <div class="col-md-8">
+          <div class="row g-0">
+
+            <!-- OTR Portal -->
+            <div class="col-md-4" data-aos="fade-up">
+              <a href="#" class="candidate-card d-block p-4 text-decoration-none">
+                <i class="fa-solid fa-id-card fa-2x mb-3"></i>
+                <h6 class="fw-bold">OTR PORTAL</h6>
+                <p class="small">One-Time-Registration Admission Portal simplifies the process of registering, creating profile & uploading education documents.</p>
+              </a>
+            </div>
+
+            <!-- Courses -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="candidate-card d-block p-4 text-decoration-none">
+                <i class="fa-solid fa-book-open fa-2x mb-3"></i>
+                <h6 class="fw-bold">COURSES</h6>
+                <p class="small">View & apply for ongoing NIELIT courses.</p>
+              </a>
+            </div>
+
+            <!-- Notifications -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+              <a href="#" class="candidate-card d-block p-4 text-decoration-none">
+                <i class="fa-solid fa-bell fa-2x mb-3"></i>
+                <h6 class="fw-bold">NOTIFICATIONS</h6>
+                <p class="small">Stay updated with announcements & events.</p>
+              </a>
+            </div>
+
+            <!-- Admit Card -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+              <a href="#" class="candidate-card d-block p-4 text-decoration-none">
+                <i class="fa-solid fa-id-badge fa-2x mb-3"></i>
+                <h6 class="fw-bold">ADMIT CARD</h6>
+                <p class="small">Generate & download admit cards.</p>
+              </a>
+            </div>
+
+            <!-- Results -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+              <a href="#" class="candidate-card d-block p-4 text-decoration-none">
+                <i class="fa-solid fa-file-lines fa-2x mb-3"></i>
+                <h6 class="fw-bold">RESULTS</h6>
+                <p class="small">View & download exam results.</p>
+              </a>
+            </div>
+
+            <!-- Downloads -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+              <a href="#" class="candidate-card d-block p-4 text-decoration-none">
+                <i class="fa-solid fa-download fa-2x mb-3"></i>
+                <h6 class="fw-bold">DOWNLOADS</h6>
+                <p class="small">Get e-Certificates, syllabus & resources.</p>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+
 
 <!-- Programs Section -->
 <section id="programs" class="container py-5">
@@ -177,42 +277,9 @@
 </section>
 
 
-<!-- ===== Photo Gallery ===== -->
-<section id="gallery" class="py-5 bg-light">
-  <div class="container">
-    <h2 class="fw-bold text-center mb-4">Campus Photo Gallery</h2>
-
-    <!-- Filter Buttons -->
-    <div class="text-center mb-4">
-      <button class="btn btn-outline-primary mx-1" data-filter="*">All</button>
-      <button class="btn btn-outline-primary mx-1" data-filter=".campus">Campus</button>
-      <button class="btn btn-outline-primary mx-1" data-filter=".labs">Computer Lab</button>
-      <button class="btn btn-outline-primary mx-1" data-filter=".events">Events</button>
-    </div>
 
     <!-- Gallery Grid -->
     <div class="row g-3 gallery-grid">
-
-      <!-- Campus -->
-      <div class="col-sm-6 col-md-4 col-lg-3 gallery-item campus">
-        <a href="images/gallery1.jpg" data-lightbox="nielit-gallery" data-title="Campus">
-          <img src="campus.png" class="img-fluid rounded shadow-sm" alt="Campus">
-        </a>
-      </div>
-
-      <!-- Labs -->
-      <div class="col-sm-6 col-md-4 col-lg-3 gallery-item labs">
-        <a href="images/gallery3.jpg" data-lightbox="nielit-gallery" data-title="Computer Lab">
-          <img src="campus.png" class="img-fluid rounded shadow-sm" alt="Computer Lab">
-        </a>
-      </div>
-
-      <!-- Events -->
-      <div class="col-sm-6 col-md-4 col-lg-3 gallery-item events">
-        <a href="images/gallery4.jpg" data-lightbox="nielit-gallery" data-title="Events">
-          <img src="campus.png" class="img-fluid rounded shadow-sm" alt="Events">
-        </a>
-      </div>
 
       <!-- Add more photos here -->
     </div>
@@ -224,9 +291,9 @@
 <section id="about" class="container py-5">
   <div class="row align-items-center">
     <div class="col-md-6" data-aos="fade-right">
-      <h2 class="fw-bold">About NIELIT Bhubaneswar</h2>
+      <h2 class="fw-bold">About NIELIT Chhattisgarh</h2>
       <p>
-        Established in 2021, NIELIT Bhubaneswar offers NSQF-aligned programs that blend academic rigor
+        Established in 2021, NIELIT Chhattisgarh offers NSQF-aligned programs that blend academic rigor
         with industry standards. With state-of-the-art labs and strong industry collaborations, we prepare
         students for real-world challenges.
       </p>
@@ -242,74 +309,6 @@
   </div>
 </section>
 
-<section id="schools" class="container py-5">
-  <div class="text-center mb-4">
-    <h2 class="fw-bold">Schools</h2>
-    <hr style="width:150px; margin:auto; border:2px solid #0d6efd; border-radius:5px;">
-  </div>
-
-  <div class="row text-center">
-
-    <!-- School 1 -->
-    <div class="col-5th">
-      <i class="fas fa-school fa-3x text-primary mb-2"></i>
-      <h6 class="fw-bold">Swami Atmanand Govt. English School Pipariya</h6>
-      <span class="badge bg-success">Training Completed</span>
-    </div>
-
-    <!-- School 2 -->
-    <div class="col-5th">
-      <i class="fas fa-school fa-3x text-primary mb-2"></i>
-      <h6 class="fw-bold">Swami Atmanand Govt. English School Bodla</h6>
-      <span class="badge bg-warning">Ongoing</span>
-    </div>
-
-    <!-- School 3 -->
-    <div class="col-5th">
-      <i class="fas fa-school fa-3x text-primary mb-2"></i>
-      <h6 class="fw-bold">Swami Atmanand Govt. English Medium School Basna</h6>
-      <span class="badge bg-success">Training Completed</span>
-    </div>
-
-    <!-- School 4 -->
-    <div class="col-5th">
-      <i class="fas fa-school fa-3x text-primary mb-2"></i>
-      <h6 class="fw-bold">Swami Atmanand Utkrisht English School Lawan</h6>
-      <span class="badge bg-warning">Ongoing</span>
-    </div>
-
-    <!-- School 5 -->
-    <div class="col-5th">
-      <i class="fas fa-school fa-3x text-primary mb-2"></i>
-      <h6 class="fw-bold">Swami Atmanand Utkrisht School Tumgaon</h6>
-      <span class="badge bg-success">Training Completed</span>
-    </div>
-
-    <!-- School 6 -->
-    <div class="col-5th">
-      <i class="fas fa-school fa-3x text-primary mb-2"></i>
-      <h6 class="fw-bold">Swami Atmanand Utkrisht School Kharod</h6>
-      <span class="badge bg-warning">Ongoing</span>
-    </div>
-
-    <!-- School 7 -->
-    <div class="col-5th">
-      <i class="fas fa-school fa-3x text-primary mb-2"></i>
-      <h6 class="fw-bold">Swami Atmanand Govt. English Medium School Pithora</h6>
-      <span class="badge bg-success">Training Completed</span>
-    </div>
-
-    <!-- School 8 -->
-    <div class="col-5th">
-      <i class="fas fa-school fa-3x text-primary mb-2"></i>
-      <h6 class="fw-bold">Swami Atmanand Govt. English Medium School Kasdol</h6>
-      <span class="badge bg-warning">Ongoing</span>
-    </div>
-
-    <!-- Add more schools here using the same format -->
-
-  </div>
-</section>
 
 
 

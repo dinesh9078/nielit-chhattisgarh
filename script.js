@@ -189,3 +189,10 @@ function renderSchools() {
     });
   }
 }
+// Initialize AOS for scroll animations
+document.addEventListener("DOMContentLoaded", () => {
+  AOS.init({
+    duration: 1000, // Animation duration in milliseconds
+    once: true, // Trigger animation only once when it comes into view
+  });
+});
