@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Course Details</title>
+  <link rel="stylesheet" href="style.css"> <!-- Link to your existing style.css -->
+  <script src="script.js"></script> <!-- Link to your existing script.js -->
+</head>
+<body>
+  <header>
+    <h1>Course Details</h1>
+  </header>
+
+  <section class="course-details">
+    <div id="course-info">
+      <!-- Dynamic course content will be inserted here -->
+    </div>
+
+    <!-- Registration Form -->
+    <h2>Apply for Course</h2>
+    <form action="/apply" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <button type="submit">Submit Application</button>
+    </form>
+  </section>
+
+  <script>
+    // JavaScript to dynamically load course details based on URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const course = urlParams.get('course');
+    
+    const courseDetails = {
+      'mca': {
+        name: 'Master of Computer Applications',
+        duration: '2 Years',
+        deadline: '14th September, 2025',
+        description: 'Learn advanced computer applications and software development.'
+      },
+      'mtech': {
+        name: 'Master of Technology (M.Tech)',
+        duration: '2 Years',
+        deadline: '14th September, 2025',
+        description: 'Specialize in cutting-edge technology and research.'
+      },
+      'ai': {
+        name: 'Foundation of Artificial Intelligence Technology',
+        duration: '90 Hours',
+        deadline: '18th September, 2025',
+        description: 'Introduction to AI concepts and tools.'
+      }
+    };
+
+    const courseData = courseDetails[course];
+
+    if (courseData) {
+      document.getElementById('course-info').innerHTML = `
+        <h2>${courseData.name}</h2>
+        <p><strong>Duration:</strong> ${courseData.duration}</p>
+        <p><strong>Last Date for Registration:</strong> ${courseData.deadline}</p>
+        <p><strong>Description:</strong> ${courseData.description}</p>
+      `;
+    } else {
+      document.getElementById('course-info').innerHTML = `<p>Course not found.</p>`;
+    }
+  </script>
+</body>
+</html>

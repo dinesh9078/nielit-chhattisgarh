@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Form | NIELIT Chhattisgarh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .form-step {
+            display: none;
+        }
+        .form-step.active {
+            display: block;
+        }
+        .progress-step {
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+        .file-input-label {
+            cursor: pointer;
+            border: 2px dashed #cbd5e1;
+            padding: 2rem 1rem;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .file-input-label:hover {
+            background-color: #f8fafc;
+            border-color: #3b82f6;
+        }
+        /* Hide the default file input */
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-6xl">
+        <div class="bg-white rounded-xl shadow-lg">
+            <!-- Header Section -->
+            <header class="bg-blue-700 text-white p-6 sm:p-8 rounded-t-xl">
+                <h1 class="text-2xl sm:text-3xl font-bold">NIELIT Chhattisgarh</h1>
+                <p class="text-sm sm:text-base text-blue-200">Application Form</p>
+                <div id="selected-course" class="mt-3 p-3 bg-blue-600 rounded-lg" style="display: none;">
+                    <p class="text-sm text-blue-100">Applying for:</p>
+                    <p id="course-name" class="font-semibold text-lg text-white"></p>
+                </div>
+            </header>
+
+            <!-- Progress Bar -->
+            <div class="p-6 border-b">
+                <div class="flex items-center justify-between">
+                    <div class="progress-step flex-1 text-center" id="progress-1">
+                        <div class="w-10 h-10 mx-auto bg-blue-600 text-white rounded-full text-lg flex items-center justify-center">1</div>
+                        <p class="text-sm mt-2 font-medium text-gray-700">Basic Information</p>
+                    </div>
+                    <div class="flex-1 border-t-2 border-gray-300"></div>
+                    <div class="progress-step flex-1 text-center" id="progress-2">
+                        <div class="w-10 h-10 mx-auto bg-white border-2 border-gray-300 rounded-full text-lg flex items-center justify-center text-gray-500">2</div>
+                        <p class="text-sm mt-2 font-medium text-gray-500">Academics</p>
+                    </div>
+                    <div class="flex-1 border-t-2 border-gray-300"></div>
+                    <div class="progress-step flex-1 text-center" id="progress-3">
+                        <div class="w-10 h-10 mx-auto bg-white border-2 border-gray-300 rounded-full text-lg flex items-center justify-center text-gray-500">3</div>
+                        <p class="text-sm mt-2 font-medium text-gray-500">Add Address</p>
+                    </div>
+                     <div class="flex-1 border-t-2 border-gray-300"></div>
+                    <div class="progress-step flex-1 text-center" id="progress-4">
+                        <div class="w-10 h-10 mx-auto bg-white border-2 border-gray-300 rounded-full text-lg flex items-center justify-center text-gray-500">4</div>
+                        <p class="text-sm mt-2 font-medium text-gray-500">Confirmation</p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="multiStepForm" class="p-6 sm:p-8" enctype="multipart/form-data" onsubmit="submitForm(event)">
+                <!-- Step 1: Basic Information -->
+                <div id="step-1" class="form-step active">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Basic Information</h3>
+                    <p class="text-sm text-gray-600 mb-4 bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded-md">Make sure your name entered matches with the name on your ID Documents.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- File Uploads -->
+                        <div class="text-center">
+                            <label for="passportPhoto" class="file-input-label flex flex-col items-center justify-center h-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="font-semibold text-gray-700">Passport Photo <span class="text-red-500">*</span></span>
+                                <span id="photoFileName" class="mt-1 text-xs text-gray-500">JPG, PNG, JPEG allowed.</span>
+                            </label>
+                            <input type="file" id="passportPhoto" accept=".jpg, .jpeg, .png" required>
+                        </div>
+                         <div class="text-center">
+                            <label for="signature" class="file-input-label flex flex-col items-center justify-center h-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                </svg>
+                                <span class="font-semibold text-gray-700">Signature <span class="text-red-500">*</span></span>
+                                <span id="sigFileName" class="mt-1 text-xs text-gray-500">JPG, PNG, JPEG allowed.</span>
+                            </label>
+                            <input type="file" id="signature" accept=".jpg, .jpeg, .png" required>
+                        </div>
+                        <div class="text-center">
+                            <label for="thumbPrint" class="file-input-label flex flex-col items-center justify-center h-full">
+                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75" transform="rotate(90 12 12)" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.875 12.75h8.25" />
+                                </svg>
+                                <span class="font-semibold text-gray-700">Left Thumb Print <span class="text-red-500">*</span></span>
+                                <span id="thumbFileName" class="mt-1 text-xs text-gray-500">JPG, PNG, JPEG allowed.</span>
+                            </label>
+                            <input type="file" id="thumbPrint" accept=".jpg, .jpeg, .png" required>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                        <div>
+                            <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name (as in HSLC Admit Card) <span class="text-red-500">*</span></label>
+                            <input type="text" id="fullName" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                        <div>
+                            <label for="fatherName" class="block text-sm font-medium text-gray-700">Father's Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="fatherName" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                         <div>
+                            <label for="motherName" class="block text-sm font-medium text-gray-700">Mother's Name</label>
+                            <input type="text" id="motherName" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                             <label for="category" class="block text-sm font-medium text-gray-700">Category <span class="text-red-500">*</span></label>
+                             <select id="category" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                                <option value="">Select category</option>
+                                <option>General</option>
+                                <option>OBC</option>
+                                <option>SC</option>
+                                <option>ST</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="categoryCert" class="block text-sm font-medium text-gray-700">Upload Certificate <span class="text-red-500">*</span> <span id="categoryCertFileName" class="text-xs text-gray-500"></span></label>
+                            <input type="file" id="categoryCert" accept=".jpg, .jpeg, .png, .pdf" required>
+                            <button type="button" onclick="document.getElementById('categoryCert').click()" class="mt-1 w-full text-left px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">Select File</button>
+                        </div>
+                        <div>
+                            <label for="tribe" class="block text-sm font-medium text-gray-700">Tribe / Community</label>
+                            <input type="text" id="tribe" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="bloodGroup" class="block text-sm font-medium text-gray-700">Blood Group <span class="text-red-500">*</span></label>
+                            <select id="bloodGroup" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                                <option value="">Select blood group</option>
+                                <option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+                            </select>
+                        </div>
+                         <div>
+                            <label for="idMark" class="block text-sm font-medium text-gray-700">Identification Mark</label>
+                            <input type="text" id="idMark" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                         <div>
+                            <label for="gender" class="block text-sm font-medium text-gray-700">Gender <span class="text-red-500">*</span></label>
+                            <select id="gender" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                                <option value="">Select gender</option>
+                                <option>Male</option><option>Female</option><option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth <span class="text-red-500">*</span></label>
+                            <input type="date" id="dob" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email ID</label>
+                            <input type="email" id="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                             <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number <span class="text-red-500">*</span></label>
+                            <input type="tel" id="phone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                         <div>
+                             <label for="parentPhone" class="block text-sm font-medium text-gray-700">Parent's / Local Guardian Phone Number <span class="text-red-500">*</span></label>
+                            <input type="tel" id="parentPhone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                         <div>
+                             <label for="aadhaar" class="block text-sm font-medium text-gray-700">Aadhaar Number <span class="text-red-500">*</span></label>
+                            <input type="text" id="aadhaar" pattern="\d{12}" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                         <div>
+                            <label for="aadhaarUpload" class="block text-sm font-medium text-gray-700">Upload Aadhaar <span class="text-red-500">*</span> <span id="aadhaarFileName" class="text-xs text-gray-500"></span></label>
+                            <input type="file" id="aadhaarUpload" accept=".jpg, .jpeg, .png, .pdf" required>
+                             <button type="button" onclick="document.getElementById('aadhaarUpload').click()" class="mt-1 w-full text-left px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">Select File (Only Image/PDF)</button>
+                        </div>
+                         <div class="md:col-span-2">
+                             <label class="block text-sm font-medium text-gray-700">Are you differently abled?</label>
+                             <div class="mt-2 flex items-center space-x-4">
+                                <label><input type="radio" name="differentlyAbled" value="yes" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300"> Yes</label>
+                                <label><input type="radio" name="differentlyAbled" value="no" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300" checked> No</label>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Academics -->
+                <div id="step-2" class="form-step">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Academic Qualifications</h3>
+                    <div id="academic-container">
+                        <!-- Dynamic content will be inserted here -->
+                    </div>
+                     <button type="button" onclick="addAcademicRow()" class="mt-4 text-sm font-medium text-blue-600 hover:text-blue-800">+ Add Another Qualification</button>
+                </div>
+
+                <!-- Step 3: Address -->
+                <div id="step-3" class="form-step">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Address Details</h3>
+                    <!-- Permanent Address -->
+                    <div class="border p-4 rounded-lg">
+                        <h4 class="font-semibold mb-2">Permanent Address</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                             <div class="md:col-span-2">
+                                <label for="permAddress1" class="block text-sm font-medium text-gray-700">Address Line 1</label>
+                                <input type="text" id="permAddress1" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="permCity" class="block text-sm font-medium text-gray-700">City / Village</label>
+                                <input type="text" id="permCity" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="permState" class="block text-sm font-medium text-gray-700">State</label>
+                                <input type="text" id="permState" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                             <div>
+                                <label for="permDistrict" class="block text-sm font-medium text-gray-700">District</label>
+                                <input type="text" id="permDistrict" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="permPincode" class="block text-sm font-medium text-gray-700">Pincode</label>
+                                <input type="text" id="permPincode" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Correspondence Address -->
+                    <div class="border p-4 rounded-lg mt-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-semibold">Correspondence Address</h4>
+                             <label class="flex items-center text-sm"><input type="checkbox" id="sameAsPermanent" onchange="copyAddress()" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-2"> Same as Permanent Address</label>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="md:col-span-2">
+                                <label for="corrAddress1" class="block text-sm font-medium text-gray-700">Address Line 1</label>
+                                <input type="text" id="corrAddress1" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="corrCity" class="block text-sm font-medium text-gray-700">City / Village</label>
+                                <input type="text" id="corrCity" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="corrState" class="block text-sm font-medium text-gray-700">State</label>
+                                <input type="text" id="corrState" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                             <div>
+                                <label for="corrDistrict" class="block text-sm font-medium text-gray-700">District</label>
+                                <input type="text" id="corrDistrict" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="corrPincode" class="block text-sm font-medium text-gray-700">Pincode</label>
+                                <input type="text" id="corrPincode" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Confirmation -->
+                <div id="step-4" class="form-step">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Review Your Application</h3>
+                    <p class="text-sm text-gray-600 mb-4">Please review all the information carefully before submitting.</p>
+                    <div id="confirmation-details" class="space-y-4">
+                        <!-- Confirmation content will be injected here by JS -->
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="mt-8 pt-5 border-t flex justify-between">
+                    <button type="button" id="prev-btn" class="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300 disabled:opacity-50" disabled>Previous</button>
+                    <button type="button" id="next-btn" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Next</button>
+                    <button type="submit" id="submit-btn" class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 hidden">Confirm & Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal for Success Message -->
+    <div id="successModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                 <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                    <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900 mt-2">Application Submitted!</h3>
+                <p class="text-sm text-gray-500 mt-2 px-7 py-3">Your application has been successfully submitted.</p>
+                <button onclick="window.location.reload()" class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Course mapping object (fallback for static mapping)
+        let courseMapping = {
+            'MCA': 'Master of Computer Applications',
+            'MTech': 'Master of Technology (M.Tech)',
+            'FAIT': 'Foundation of Artificial Intelligence Technology',
+            'DataCurationPython': 'Fundamentals of Data Curation using Python',
+            'CCC': 'Course on Computer Concepts (CCC)',
+            'MultimediaAssociate': 'Multimedia Development Associate'
+        };
+        
+        // Function to load courses from database
+        async function loadCourseMapping() {
+            try {
+                const response = await fetch('api/get_courses.php');
+                const courses = await response.json();
+                if (courses.success && courses.data) {
+                    const dynamicMapping = {};
+                    courses.data.forEach(course => {
+                        if (course.course_code) {
+                            dynamicMapping[course.course_code] = course.title;
+                        }
+                    });
+                    // Merge with static mapping
+                    courseMapping = { ...courseMapping, ...dynamicMapping };
+                }
+            } catch (error) {
+                console.log('Using fallback course mapping');
+            }
+        }
+
+        // Function to get URL parameters
+        function getURLParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to display selected course
+        function displaySelectedCourse() {
+            const courseCode = getURLParameter('course');
+            if (courseCode && courseMapping[courseCode]) {
+                const courseName = courseMapping[courseCode];
+                document.getElementById('course-name').textContent = courseName;
+                document.getElementById('selected-course').style.display = 'block';
+            }
+        }
+
+        let currentStep = 1;
+        const form = document.getElementById('multiStepForm');
+        const steps = document.querySelectorAll('.form-step');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+
+        const fileInputs = {
+            passportPhoto: 'photoFileName',
+            signature: 'sigFileName',
+            thumbPrint: 'thumbFileName',
+            categoryCert: 'categoryCertFileName',
+            aadhaarUpload: 'aadhaarFileName',
+        };
+
+        Object.keys(fileInputs).forEach(inputId => {
+            const input = document.getElementById(inputId);
+            const labelId = fileInputs[inputId];
+            if (input) {
+                input.addEventListener('change', () => {
+                    const label = document.getElementById(labelId);
+                    if (label) {
+                       label.textContent = input.files.length > 0 ? input.files[0].name : label.dataset.defaultText;
+                    }
+                });
+            }
+        });
+
+        const showStep = (step) => {
+            steps.forEach((el, index) => {
+                el.classList.toggle('active', index + 1 === step);
+            });
+            updateProgressBar(step);
+            updateNavButtons(step);
+        };
+
+        const updateProgressBar = (step) => {
+            for (let i = 1; i <= steps.length; i++) {
+                const progressDiv = document.querySelector(`#progress-${i} div`);
+                const progressText = document.querySelector(`#progress-${i} p`);
+                if (i < step) { // Completed
+                    progressDiv.className = 'w-10 h-10 mx-auto bg-green-500 text-white rounded-full text-lg flex items-center justify-center';
+                    progressText.className = 'text-sm mt-2 font-medium text-gray-700';
+                } else if (i === step) { // Active
+                    progressDiv.className = 'w-10 h-10 mx-auto bg-blue-600 text-white rounded-full text-lg flex items-center justify-center';
+                    progressText.className = 'text-sm mt-2 font-medium text-gray-700';
+                } else { // Inactive
+                    progressDiv.className = 'w-10 h-10 mx-auto bg-white border-2 border-gray-300 rounded-full text-lg flex items-center justify-center text-gray-500';
+                    progressText.className = 'text-sm mt-2 font-medium text-gray-500';
+                }
+            }
+        };
+
+        const updateNavButtons = (step) => {
+            prevBtn.disabled = step === 1;
+            nextBtn.classList.toggle('hidden', step === steps.length);
+            submitBtn.classList.toggle('hidden', step !== steps.length);
+        };
+
+        const validateStep = (step) => {
+            const currentStepFields = document.getElementById(`step-${step}`).querySelectorAll('[required]');
+            for (const field of currentStepFields) {
+                if (!field.value.trim()) {
+                    field.focus();
+                    alert('Please fill out all required fields.');
+                    return false;
+                }
+            }
+            return true;
+        };
+        
+        const populateConfirmation = () => {
+            const confirmationDiv = document.getElementById('confirmation-details');
+            let html = '<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">';
+            
+            const fieldLabels = {
+                // Basic Info
+                fullName: "Full Name", fatherName: "Father's Name", motherName: "Mother's Name", category: "Category",
+                tribe: "Tribe/Community", bloodGroup: "Blood Group", idMark: "Identification Mark", gender: "Gender", dob: "Date of Birth",
+                email: "Email ID", phone: "Phone Number", parentPhone: "Parent's Phone", aadhaar: "Aadhaar Number",
+                differentlyAbled: "Differently Abled",
+                // Address
+                permAddress1: "Permanent Address", permCity: "Permanent City", permState: "Permanent State", permDistrict: "Permanent District", permPincode: "Permanent Pincode",
+                corrAddress1: "Correspondence Address", corrCity: "Correspondence City", corrState: "Correspondence State", corrDistrict: "Correspondence District", corrPincode: "Correspondence Pincode",
+            };
+
+            document.querySelectorAll('#step-1 input, #step-1 select, #step-3 input').forEach(input => {
+                 if(input.type !== 'file' && input.type !== 'button' && input.id && fieldLabels[input.id]) {
+                     const value = input.type === 'radio' ? (document.querySelector(`input[name="${input.name}"]:checked`)?.value || 'N/A') : (input.value || 'N/A');
+                     html += `<div class="py-2"><p class="text-sm font-medium text-gray-500">${fieldLabels[input.id]}</p><p class="text-gray-800 font-semibold">${value}</p></div>`;
+                 }
+            });
+
+            html += '</div>';
+            confirmationDiv.innerHTML = html;
+        };
+
+        nextBtn.addEventListener('click', () => {
+            if (validateStep(currentStep)) {
+                if (currentStep < steps.length) {
+                    currentStep++;
+                    if (currentStep === steps.length) {
+                       populateConfirmation();
+                    }
+                    showStep(currentStep);
+                }
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+
+        function submitForm(event) {
+            event.preventDefault();
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            // Create FormData object for file uploads
+            const formData = new FormData();
+            
+            // Add all form fields
+            const form = document.getElementById('multiStepForm');
+            const formElements = form.querySelectorAll('input, select, textarea');
+            
+            formElements.forEach(element => {
+                if (element.type === 'file') {
+                    if (element.files.length > 0) {
+                        formData.append(element.id, element.files[0]);
+                    }
+                } else if (element.type === 'radio') {
+                    if (element.checked) {
+                        formData.append(element.name, element.value);
+                    }
+                } else if (element.type === 'checkbox') {
+                    formData.append(element.id, element.checked ? 'yes' : 'no');
+                } else if (element.value) {
+                    formData.append(element.id, element.value);
+                }
+            });
+            
+            // Add course information from URL
+            const courseCode = getURLParameter('course');
+            const courseName = courseMapping[courseCode] || '';
+            formData.append('courseCode', courseCode);
+            formData.append('courseName', courseName);
+            
+            // Collect academic qualifications
+            const academicRows = document.querySelectorAll('#academic-container > div');
+            const academics = [];
+            academicRows.forEach((row, index) => {
+                const inputs = row.querySelectorAll('input');
+                if (inputs.length >= 4) {
+                    academics.push({
+                        examPassed: inputs[0].value,
+                        boardUniversity: inputs[1].value,
+                        yearOfPassing: inputs[2].value,
+                        percentageCgpa: inputs[3].value
+                    });
+                    
+                    // Handle marksheet file if exists
+                    const fileInput = inputs[4];
+                    if (fileInput && fileInput.files.length > 0) {
+                        formData.append(`marksheets[${index}]`, fileInput.files[0]);
+                    }
+                }
+            });
+            formData.append('academics', JSON.stringify(academics));
+            
+            // Submit form via AJAX
+            fetch('course_registration_process.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showSuccessModal(data.applicationId, data.message);
+                } else {
+                    showErrorModal(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showErrorModal('An error occurred while submitting the form. Please try again.');
+            })
+            .finally(() => {
+                // Restore button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        }
+        
+        function showSuccessModal(applicationId, message) {
+            const modal = document.getElementById('successModal');
+            const modalContent = modal.querySelector('.mt-3');
+            modalContent.innerHTML = `
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                    <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900 mt-2">Application Submitted Successfully!</h3>
+                <div class="mt-4 p-4 bg-green-50 rounded-lg">
+                    <p class="text-sm text-green-700 font-medium">Application ID: ${applicationId}</p>
+                    <p class="text-xs text-green-600 mt-1">Please save this ID for future reference</p>
+                </div>
+                <p class="text-sm text-gray-500 mt-2 px-7 py-3">${message}</p>
+                <button onclick="window.location.href='index.php'" class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600 mt-3">Go to Home</button>
+            `;
+            modal.classList.remove('hidden');
+        }
+        
+        function showErrorModal(message) {
+            const modal = document.getElementById('successModal');
+            const modalContent = modal.querySelector('.mt-3');
+            modalContent.innerHTML = `
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                    <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900 mt-2">Submission Failed</h3>
+                <p class="text-sm text-red-600 mt-2 px-7 py-3">${message}</p>
+                <button onclick="this.closest('#successModal').classList.add('hidden')" class="px-4 py-2 bg-red-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-red-600 mt-3">Try Again</button>
+            `;
+            modal.classList.remove('hidden');
+        }
+        
+        let academicRowCount = 0;
+        
+        // Function to generate year options from 1998 to 2025
+        function generateYearOptions() {
+            let options = '<option value="">Select Year</option>';
+            for (let year = 2025; year >= 1998; year--) {
+                options += `<option value="${year}">${year}</option>`;
+            }
+            return options;
+        }
+        
+        function addAcademicRow() {
+            academicRowCount++;
+            const container = document.getElementById('academic-container');
+            const newRow = document.createElement('div');
+            newRow.className = 'grid grid-cols-1 md:grid-cols-5 gap-4 border-t pt-4 mt-4';
+            newRow.innerHTML = `
+                <div><label class="text-sm">Exam Passed</label><input type="text" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></div>
+                <div><label class="text-sm">Board/University</label><input type="text" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></div>
+                <div><label class="text-sm">Year of Passing</label><select class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">${generateYearOptions()}</select></div>
+                <div><label class="text-sm">Percentage/CGPA</label><input type="text" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></div>
+                <div><label class="text-sm">Upload Marksheet</label><button type="button" onclick="this.nextElementSibling.click()" class="mt-1 w-full text-left p-2 border border-gray-300 rounded-md shadow-sm bg-white text-xs">Select File</button><input type="file" class="hidden"></div>
+            `;
+            container.appendChild(newRow);
+        }
+
+        function copyAddress() {
+             if (document.getElementById('sameAsPermanent').checked) {
+                document.getElementById('corrAddress1').value = document.getElementById('permAddress1').value;
+                document.getElementById('corrCity').value = document.getElementById('permCity').value;
+                document.getElementById('corrState').value = document.getElementById('permState').value;
+                document.getElementById('corrDistrict').value = document.getElementById('permDistrict').value;
+                document.getElementById('corrPincode').value = document.getElementById('permPincode').value;
+            } else {
+                 document.getElementById('corrAddress1').value = '';
+                document.getElementById('corrCity').value = '';
+                document.getElementById('corrState').value = '';
+                document.getElementById('corrDistrict').value = '';
+                document.getElementById('corrPincode').value = '';
+            }
+        }
+        
+        // Initial setup
+        window.onload = async () => {
+            await loadCourseMapping(); // Load dynamic course mapping
+            displaySelectedCourse(); // Display selected course from URL parameter
+            showStep(currentStep);
+            addAcademicRow(); // Add one row by default
+        };
+
+    </script>
+</body>
+</html>
+

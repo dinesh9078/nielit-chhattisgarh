@@ -1,0 +1,625 @@
+<?php
+session_start();
+
+// Check if student is logged in
+$isLoggedIn = isset($_SESSION['student_id']) && !empty($_SESSION['student_id']);
+$studentName = $_SESSION['student_name'] ?? '';
+$studentEmail = $_SESSION['student_email'] ?? '';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NIELIT CHHATTISGARH</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS Animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Lightbox CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- Top Header -->
+<div class="container-fluid top-header py-2 border-bottom bg-white">
+  <div class="row align-items-center">
+    <!-- Left Logo -->
+    <div class="col-md-3 col-12 logo-left text-md-start text-center mb-2 mb-md-0">
+      <img src="logo.png" alt="NIELIT Logo" class="img-fluid">
+    </div>
+
+    <!-- Center Text -->
+    <div class="col-md-6 col-12 center-text mb-2 mb-md-0">
+      <h5 class="hindi-text">राष्ट्रीय इलेक्ट्रॉनिकी एवं सूचना प्रौद्योगिकी संस्थान , छत्तीसगढ</h5>
+      <p class="english-text mb-0">National Institute of Electronics & Information Technology, Chhattisgarh</p>
+    </div>
+
+    <!-- Right Logo -->
+    <div class="col-md-3 col-12 logo-right text-md-end text-center">
+      <img src="Ministry_of_Electronics_and_Information_Technology_fixed.jpg" alt="Ministry of Electronics & IT" class="img-fluid">
+    </div>
+  </div>
+</div>
+
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold text-white" href="#">
+      <i class="fa-solid fa-graduation-cap"></i> NIELIT CHHATTISGARH
+    </a>
+
+    <!-- Mobile toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">
+            <i class="fa-solid fa-house"></i> Home
+          </a>
+        </li>
+
+        <!-- Project -->
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">
+            <i class="fa-solid fa-diagram-project"></i> Project
+          </a>
+        </li>
+
+        <!-- Courses -->
+        <li class="nav-item">
+          <a class="nav-link text-white" href="course.php">
+            <i class="fa-solid fa-book-open"></i> Courses
+          </a>
+        </li>
+
+        <!-- Login/User Dropdown -->
+        <?php if ($isLoggedIn): ?>
+        <!-- Logged in user dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-user-circle"></i> <?php echo htmlspecialchars($studentName); ?>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="userDropdown">
+            <li><h6 class="dropdown-header">Welcome, <?php echo htmlspecialchars($studentName); ?></h6></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="student_dashboard.php"><i class="fa-solid fa-dashboard me-2"></i> Dashboard</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="student_logout.php"><i class="fa-solid fa-sign-out-alt me-2"></i> Logout</a></li>
+          </ul>
+        </li>
+        <?php else: ?>
+        <!-- Not logged in dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-user"></i> Login
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="loginDropdown">
+            <li><a class="dropdown-item" href="student_login.html"><i class="fa-solid fa-user-graduate me-2"></i> Student</a></li>
+            <li><a class="dropdown-item" href="admin_login.php"><i class="fa-solid fa-user-shield me-2"></i> Admin</a></li>
+          </ul>
+        </li>
+        <?php endif; ?>
+
+
+
+        <!-- Register/Courses -->
+        <?php if ($isLoggedIn): ?>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="course.php">
+            <i class="fa-solid fa-graduation-cap"></i> Apply Courses
+          </a>
+        </li>
+        <?php else: ?>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="student_registration.php">
+            <i class="fa-solid fa-pen"></i> Register
+          </a>
+        </li>
+        <?php endif; ?>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- Floating Notice Bar -->
+<!-- Floating Notice Bar -->
+<div class="notice-bar">
+  <span>
+    📢 Admission Open for AI & Data Science | 📰 Latest Circular: Examination Timetable – Feb 2025 |
+    🎉 Placement Drive with Infosys | 💡 Cyber Security Workshop
+  </span>
+</div>
+
+
+<!-- Hero -->
+<section id="hero" class="hero">
+  <div id="particles-js"></div>
+  <div class="hero-content" data-aos="fade-up">
+    <?php if ($isLoggedIn): ?>
+    <div class="mb-3">
+      <div class="alert alert-success d-inline-block px-4 py-2" style="background: rgba(255,255,255,0.9); color: #155724; border: none; border-radius: 25px;">
+        <i class="fa-solid fa-user-circle me-2"></i>
+        <strong>Welcome back, <?php echo htmlspecialchars($studentName); ?>!</strong>
+      </div>
+    </div>
+    <?php endif; ?>
+    <h1 class="fw-bold"><span id="typewriter"></span></h1>
+    <p>Empowering students with cutting-edge skills in Electronics, IT & Beyond.</p>
+    <?php if ($isLoggedIn): ?>
+    <a href="course.php" class="btn btn-light btn-modern mt-3 me-3">Apply for Courses</a>
+    <a href="#programs" class="btn btn-outline-light btn-modern mt-3">Explore Programs</a>
+    <?php else: ?>
+    <a href="#programs" class="btn btn-light btn-modern mt-3">Explore Programs</a>
+    <?php endif; ?>
+  </div>
+</section>
+
+<!-- ===== Notices & Admissions ===== -->
+<section id="notices" class="container py-5">
+  <div class="text-center mb-4" data-aos="fade-up">
+    <h2 class="fw-bold">Latest Notices & Admissions</h2>
+    <p class="text-muted">Stay updated with the latest circulars and announcements</p>
+  </div>
+  
+  <div class="table-responsive" data-aos="fade-up">
+    <table class="table table-hover modern-table">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Title</th>
+          <th scope="col">Download</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        try {
+            require_once 'db.php';
+            
+            // Get live notices
+            $sql = "SELECT id, title, description, date, attachment_url, status 
+                    FROM notices 
+                    WHERE status = 'live' 
+                    ORDER BY date DESC, created_at DESC 
+                    LIMIT 10";
+            
+            $result = $conn->query($sql);
+            $counter = 1;
+            
+            if ($result && $result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $formatted_date = date('d-m-Y', strtotime($row['date']));
+                    $attachment_btn = '';
+                    
+                    if (!empty($row['attachment_url'])) {
+                        $attachment_btn = '<a href="' . htmlspecialchars($row['attachment_url']) . '" class="btn btn-sm btn-outline-primary" target="_blank"><i class="fa fa-download"></i> PDF</a>';
+                    } else {
+                        $attachment_btn = '<span class="text-muted small">No attachment</span>';
+                    }
+                    
+                    echo '<tr>';
+                    echo '<th scope="row">' . $counter . '</th>';
+                    echo '<td>' . htmlspecialchars($formatted_date) . '</td>';
+                    echo '<td>' . htmlspecialchars($row['title']);
+                    if (!empty($row['description'])) {
+                        echo '<br><small class="text-muted">' . htmlspecialchars($row['description']) . '</small>';
+                    }
+                    echo '</td>';
+                    echo '<td>' . $attachment_btn . '</td>';
+                    echo '</tr>';
+                    
+                    $counter++;
+                }
+            } else {
+                // Default notices if none in database
+                echo '<tr>';
+                echo '<th scope="row">1</th>';
+                echo '<td>08-01-2025</td>';
+                echo '<td>Admission Open for AI & Data Science (Batch 2025)</td>';
+                echo '<td><span class="text-muted small">No attachment</span></td>';
+                echo '</tr>';
+                echo '<tr>';
+                echo '<th scope="row">2</th>';
+                echo '<td>05-01-2025</td>';
+                echo '<td>Examination Timetable – February 2025</td>';
+                echo '<td><span class="text-muted small">No attachment</span></td>';
+                echo '</tr>';
+                echo '<tr>';
+                echo '<th scope="row">3</th>';
+                echo '<td>01-01-2025</td>';
+                echo '<td>Placement Drive with Infosys – Registrations Open</td>';
+                echo '<td><span class="text-muted small">No attachment</span></td>';
+                echo '</tr>';
+            }
+            
+        } catch (Exception $e) {
+            // Fallback to default notices on error
+            echo '<tr><td colspan="4" class="text-center text-muted">Unable to load notices. Please try again later.</td></tr>';
+        }
+        ?>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+  <!-- Add the Candidates Corner Section here -->
+  <section id="candidates-corner" class="py-5">
+    <div class="container-fluid">
+      <div class="row g-0">
+
+        <!-- Left Panel (Candidates Corner Heading) -->
+        <div class="col-md-4 candidates-left text-white p-5 d-flex flex-column justify-content-center" data-aos="fade-up">
+          <i class="fa-solid fa-laptop fa-3x mb-3"></i>
+          <h3 class="fw-bold">CANDIDATES CORNER</h3>
+          <p>Find useful resources, tools and services.</p>
+        </div>
+
+        <!-- Right Panel (Resource Cards) -->
+        <div class="col-md-8">
+          <div class="row g-0">
+
+            <!-- OTR Portal -->
+            <div class="col-md-4" data-aos="fade-up">
+              <a href="#" class="candidate-card d-block p-4 text-decoration-none">
+                <i class="fa-solid fa-id-card fa-2x mb-3"></i>
+                <h6 class="fw-bold">OTR PORTAL</h6>
+                <p class="small">One-Time-Registration Admission Portal simplifies the process of registering, creating profile & uploading education documents.</p>
+              </a>
+            </div>
+
+            <!-- Courses -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="candidate-card d-block p-4 text-decoration-none">
+                <i class="fa-solid fa-book-open fa-2x mb-3"></i>
+                <h6 class="fw-bold">COURSES</h6>
+                <p class="small">View & apply for ongoing NIELIT courses.</p>
+              </a>
+            </div>
+
+            <!-- Notifications -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+              <a href="#" class="candidate-card d-block p-4 text-decoration-none">
+                <i class="fa-solid fa-bell fa-2x mb-3"></i>
+                <h6 class="fw-bold">NOTIFICATIONS</h6>
+                <p class="small">Stay updated with announcements & events.</p>
+              </a>
+            </div>
+
+            <!-- Admit Card -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+              <a href="#" class="candidate-card d-block p-4 text-decoration-none">
+                <i class="fa-solid fa-id-badge fa-2x mb-3"></i>
+                <h6 class="fw-bold">ADMIT CARD</h6>
+                <p class="small">Generate & download admit cards.</p>
+              </a>
+            </div>
+
+            <!-- Results -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+              <a href="#" class="candidate-card d-block p-4 text-decoration-none">
+                <i class="fa-solid fa-file-lines fa-2x mb-3"></i>
+                <h6 class="fw-bold">RESULTS</h6>
+                <p class="small">View & download exam results.</p>
+              </a>
+            </div>
+
+            <!-- Downloads -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+              <a href="#" class="candidate-card d-block p-4 text-decoration-none">
+                <i class="fa-solid fa-download fa-2x mb-3"></i>
+                <h6 class="fw-bold">DOWNLOADS</h6>
+                <p class="small">Get e-Certificates, syllabus & resources.</p>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+
+
+<!-- Programs Section -->
+<section id="programs" class="container py-5">
+  <div class="text-center mb-5" data-aos="fade-up">
+    <h2 class="fw-bold">Courses Offered</h2>
+    <p class="text-muted">Industry-ready courses designed for 2025 and beyond</p>
+  </div>
+  <div class="row g-4">
+
+    <!-- Python Programming -->
+    <div class="col-md-4 col-lg-4" data-aos="zoom-in">
+      <div class="card p-4 text-center h-100">
+        <i class="fab fa-python fa-3x text-warning mb-3"></i>
+        <h5>Python Programming</h5>
+        <p>Learn the fundamentals of Python programming language.</p>
+      </div>
+    </div>
+
+    <!-- Robotics -->
+    <div class="col-md-4 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+      <div class="card p-4 text-center h-100">
+        <i class="fas fa-robot fa-3x text-primary mb-3"></i>
+        <h5>Robotics</h5>
+        <p>Build intelligent robots with sensors, AI, and automation.</p>
+      </div>
+    </div>
+
+    <!-- Drone Technology -->
+    <div class="col-md-4 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+      <div class="card p-4 text-center h-100">
+        <i class="fas fa-helicopter fa-3x text-success mb-3"></i>
+        <h5>Drone Technology</h5>
+        <p>Master UAV and drone technology with practical training.</p>
+      </div>
+    </div>
+
+    <!-- AI/ML using Python -->
+    <div class="col-md-6 col-lg-6" data-aos="zoom-in" data-aos-delay="300">
+      <div class="card p-4 text-center h-100">
+        <i class="fas fa-brain fa-3x text-danger mb-3"></i>
+        <h5>AI / ML using Python</h5>
+        <p>Learn Artificial Intelligence & Machine Learning with Python.</p>
+      </div>
+    </div>
+
+    <!-- Cyber Security -->
+    <div class="col-md-6 col-lg-6" data-aos="zoom-in" data-aos-delay="400">
+      <div class="card p-4 text-center h-100">
+        <i class="fas fa-shield-alt fa-3x text-dark mb-3"></i>
+        <h5>Cyber Security</h5>
+        <p>Hands-on training in ethical hacking, digital forensics, and defense.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+    <!-- Gallery Grid -->
+    <div class="row g-3 gallery-grid">
+
+      <!-- Add more photos here -->
+    </div>
+  </div>
+</section>
+<!-- ✅ GALLERY SECTION CLOSED PROPERLY -->
+
+<!-- ===== About ===== -->
+<section id="about" class="container py-5">
+  <div class="row align-items-center">
+    <div class="col-md-6" data-aos="fade-right">
+      <h2 class="fw-bold">About NIELIT Chhattisgarh</h2>
+      <p>
+        Established in 2021, NIELIT Chhattisgarh offers NSQF-aligned programs that blend academic rigor
+        with industry standards. With state-of-the-art labs and strong industry collaborations, we prepare
+        students for real-world challenges.
+      </p>
+      <div class="stats mt-4">
+        <div class="stat"><span class="counter" data-target="5000">0</span>+ Students</div>
+        <div class="stat"><span class="counter" data-target="20">0</span>+ Programs</div>
+        <div class="stat"><span class="counter" data-target="100">0</span>+ Partners</div>
+      </div>
+    </div>
+    <div class="col-md-6 text-center" data-aos="fade-left">
+      <img src="campus.png" alt="Campus" class="img-fluid rounded shadow">
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- ===== Candidates Speak ===== -->
+<section id="testimonials" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-5">Candidates Speak</h2>
+
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+      <div class="carousel-inner">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="row g-3 justify-content-center">
+
+            <div class="col-md-4">
+              <div class="card shadow-sm p-4 text-center h-100">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle mx-auto mb-3" width="80" height="80" alt="Candidate 1">
+                <p>“The training at NIELIT Bhubaneswar gave me hands-on exposure to AI and Python.”</p>
+                <h6 class="fw-bold mb-0">Rahul Verma</h6>
+                <small class="text-muted">MCA Student</small>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card shadow-sm p-4 text-center h-100">
+                <img src="https://randomuser.me/api/portraits/women/45.jpg" class="rounded-circle mx-auto mb-3" width="80" height="80" alt="Candidate 2">
+                <p>“Cybersecurity training here was amazing. Faculty were supportive, and the labs were very advanced.”</p>
+                <h6 class="fw-bold mb-0">Sneha Das</h6>
+                <small class="text-muted">BSc IT Student</small>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card shadow-sm p-4 text-center h-100">
+                <img src="https://randomuser.me/api/portraits/men/12.jpg" class="rounded-circle mx-auto mb-3" width="80" height="80" alt="Candidate 3">
+                <p>“NIELIT gave me a platform to explore IoT & Robotics. The projects boosted my career opportunities.”</p>
+                <h6 class="fw-bold mb-0">Amit Kumar</h6>
+                <small class="text-muted">M.Tech Student</small>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <div class="row g-3 justify-content-center">
+
+            <div class="col-md-4">
+              <div class="card shadow-sm p-4 text-center h-100">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle mx-auto mb-3" width="80" height="80" alt="Candidate 4">
+                <p>“Python programming classes were excellent. The trainers explained concepts in a simple and practical way.”</p>
+                <h6 class="fw-bold mb-0">Anjali Mishra</h6>
+                <small class="text-muted">Python Programming Student</small>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card shadow-sm p-4 text-center h-100">
+                <img src="https://randomuser.me/api/portraits/men/65.jpg" class="rounded-circle mx-auto mb-3" width="80" height="80" alt="Candidate 5">
+                <p>“The Drone Technology course was very engaging. I even worked on live drone projects during my training.”</p>
+                <h6 class="fw-bold mb-0">Vikram Singh</h6>
+                <small class="text-muted">Drone Tech Student</small>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card shadow-sm p-4 text-center h-100">
+                <img src="https://randomuser.me/api/portraits/women/29.jpg" class="rounded-circle mx-auto mb-3" width="80" height="80" alt="Candidate 6">
+                <p>“Thanks to the Robotics program, I built my first robot. This course inspired me to pursue research in automation.”</p>
+                <h6 class="fw-bold mb-0">Priya Nair</h6>
+                <small class="text-muted">Robotics Student</small>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon custom-arrow"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon custom-arrow"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Contact -->
+<section id="contact" class="container py-5">
+  <div class="text-center mb-4" data-aos="fade-up">
+    <h2 class="fw-bold">Contact Us</h2>
+  </div>
+  <form class="mx-auto needs-validation" style="max-width: 600px;" novalidate data-aos="fade-up">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+      <label for="name">Your Name</label>
+      <div class="invalid-feedback">Please enter your name.</div>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+      <label for="email">Your Email</label>
+      <div class="invalid-feedback">Please enter a valid email.</div>
+    </div>
+    <div class="form-floating mb-3">
+      <textarea class="form-control" id="message" placeholder="Your Message" style="height: 150px;" required></textarea>
+      <label for="message">Your Message</label>
+      <div class="invalid-feedback">Please enter a message.</div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-modern">Send Message</button>
+  </form>
+</section>
+
+
+      
+
+      <!-- Add as many as you like, just assign the right category class -->
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container text-center">
+    <p>&copy; <span id="year"></span> NIELIT Bhubaneswar. All Rights Reserved.</p>
+    <div class="social-icons mt-3">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+    <a href="#hero" class="back-to-top">⬆ Back to Top</a>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js/particles.min.js"></script>
+<script src="script.js"></script>
+<!-- Isotope JS (for filtering) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+
+<!-- Lightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+<script>
+  // Init Isotope
+  var $grid = $('.gallery-grid').isotope({
+    itemSelector: '.gallery-item',
+    layoutMode: 'fitRows'
+  });
+
+  // Filter items on button click
+  $('.btn').on('click', function () {
+    var filterValue = $(this).attr('data-filter');
+    $grid.isotope({ filter: filterValue });
+    $('.btn').removeClass('active');
+    $(this).addClass('active');
+  });
+</script>
+
+</body>
+</html>

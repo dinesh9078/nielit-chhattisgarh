@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | NIELIT Chhattisgarh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <!-- Header Section -->
+            <header class="bg-blue-700 text-white p-6 sm:p-8 text-center">
+                <h1 class="text-2xl sm:text-3xl font-bold">NIELIT Chhattisgarh</h1>
+                <p class="text-sm sm:text-base text-blue-200">Login to your Account</p>
+            </header>
+
+            <!-- Login Form -->
+            <form class="p-8 sm:p-10" method="POST" action="student_login_process.php">
+                <h2 class="text-xl font-semibold text-gray-800 mb-6 text-center">Welcome Back!</h2>
+                
+                <div class="mb-5">
+                    <label for="emailOrPhone" class="block text-sm font-medium text-gray-700 mb-1">Email or Phone Number</label>
+                    <input type="text" id="emailOrPhone" name="emailOrPhone" placeholder="Enter your email or phone" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+                
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-1">
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <a href="#" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
+                    </div>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+                
+                <!-- Hidden field for redirect URL -->
+                <input type="hidden" id="redirect" name="redirect" value="">
+                
+                <div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300">
+                        Login
+                    </button>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-gray-600">
+                        Don't have an account? 
+                        <a href="#" class="font-medium text-blue-600 hover:underline">Register</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Handle redirect parameter from URL
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const redirect = urlParams.get('redirect');
+            if (redirect) {
+                document.getElementById('redirect').value = redirect;
+                // Show message about course registration
+                const header = document.querySelector('header p');
+                header.textContent = 'Please login to register for the course';
+            }
+        };
+    </script>
+</body>
+</html>
